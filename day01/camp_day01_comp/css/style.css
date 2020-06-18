@@ -1,0 +1,101 @@
+body{
+  margin: 0;
+  font-family: "Noto Sans JP";
+  /* 背景画像の写真を設定 */
+  background: url('../images/main.JPG');
+  /* 背景画像のサイズと位置を設定 */
+  background-size: cover;
+  background-position: center;
+  /* 背景をぼかす */
+  backdrop-filter: blur(10px);
+}
+
+main{
+  /* おみくじ全体の大きさを設定 */
+  max-width: 480px;
+  height: 100vh;
+  /* 背景の色を設定 */
+  background: #3e62ad;
+  /* 文字の色を設定 */
+  color: #dedede;
+  /* ページの中心に配置 */
+  margin: 0 auto;
+  /* レイアウトの設定 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* 影の設定 */
+  box-shadow: #222 0 0 10px;
+  text-shadow: #222 0 0 10px;
+}
+
+.title_section{
+  /* タイトル文字の大きさ */
+  font-size: 32px;
+  /* タイトルを上下左右中央に設定 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_section{
+  /* ボタンを上下左右中央に配置 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* はみ出したら下に回り込ませる設定 */
+  flex-wrap: wrap;
+}
+
+button{
+  /* ボタンの大きさ */
+  width: 150px;
+  height: 150px;
+  /* ボタンの角を丸くする */
+  border-radius: 15px;
+  /* ボタンの枠線を設定 */
+  border: 3px solid #dedede;
+  /* ボタン周りの余白 */
+  margin: 8px;
+  /* 文字の色と大きさを設定 */
+  color: #dedede;
+  font-size: 20px;
+  /* ボタンの中の図と文字を縦並び上下左右中央に設定 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* 影の設定 */
+  box-shadow: #222 0 0 10px;
+}
+
+button img{
+  /* ボタンの画像の大きさを設定 */
+  width: 70px;
+  height: 70px;
+}
+
+.button_health{
+  background: #a03ead;
+}
+
+.button_love{
+  background: #ad483e ;
+}
+
+.button_economy{
+  background: #8ead3e;
+}
+
+.button_study{
+  background: #3ead74;
+}
+
+.result_section{
+  /* 結果の文字の大きさ */
+  font-size: 48px;
+  /* 上下左右中央に配置 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

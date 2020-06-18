@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>マップアプリ</title>
+</head>
+
+<body>
+  <header>
+    <h1>オリジナルマップ</h1>
+  </header>
+  <main>
+    <div id="map"></div>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src='https://www.bing.com/api/maps/mapcontrol?mkt=ja-jp&key=AoJckcQr1LcmxPeiVbTLdpnS4g-tr_PHvIQsONFwjl_AjjuDGVQuwJbZHh5AwAgZ'></script>
+
+  <script>
+
+    let map;
+
+    // 現在地を取得するときのオプション
+    const option = {
+      enableHighAccuracy: true,
+      maximumAge: 20000,
+      timeout: 1000000,
+    };
+
+    // 現在地を中心にして地図を表示する関数
+    function mapsInit(position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      map = new Microsoft.Maps.Map('#map', {
+        center: {
+          latitude: lat, longitude: lng
+        },
+        zoom: 15,
+      });
+      // 地図を表示したら地図にピンを表示
+      pushPin(lat, lng, map);
+      generateInfobox(lat, lng, map);
+    }
+
+    // 現在地にピンを表示する関数
+    function pushPin(lat, lng, now) {
+      const location = new Microsoft.Maps.Location(lat, lng)
+      const pin = new Microsoft.Maps.Pushpin(location, {
+        color: 'navy',
+        visible: true,
+      });
+      now.entities.push(pin);
+    };
+
+    // infoboxをつくる関数
+    function generateInfobox(lat, lng, now) {
+      const location = new Microsoft.Maps.Location(lat, lng)
+      const infobox = new Microsoft.Maps.Infobox(location, {
+        title: 'イマココ',
+        description: "I'm here!!!"
+      });
+      infobox.setMap(now);
+    }
+
+    // 現在位置の取得に失敗したときに実行する関数
+    function showError(error) {
+      let e = '';
+      if (error.code == 1) {
+        e = '位置情報が許可されてません';
+      } else if (error.code == 2) {
+        e = '現在位置を特定できません';
+      } else if (error.code == 3) {
+        e = '位置情報を取得する前にタイムアウトになりました';
+      }
+      alert('error：' + e);
+    }
+
+    // 現在地を取得し，成功したら地図を表示する関数
+    function getPosition() {
+      navigator.geolocation.getCurrentPosition(mapsInit, showError, option);
+    }
+
+    // 全部読み込みが終わったら{}内を実行する
+    window.onload = function () {
+      getPosition();
+    }
+  </script>
+</body>
+
+</html>

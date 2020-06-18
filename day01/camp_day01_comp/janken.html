@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>じゃんけん</h1>
+  </header>
+  <main>
+    <section>
+      <button id="button_gu">グー</button>
+      <button id="button_cho">チョキ</button>
+      <button id="button_pa">パー</button>
+    </section>
+    <section>
+      <p>相手の手は？？</p>
+      <p id="com_hand">ready...</p>
+      <p>結果は？？</p>
+      <p id="result">ready...</p>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $('#button_gu').on('click', function () {
+        const randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber == 0) {
+          $('#com_hand').text('グー');
+          $('#result').text('あいこ');
+        } else if (randomNumber == 1) {
+          $('#com_hand').text('チョキ');
+          $('#result').text('勝ち');
+        } else if (randomNumber == 2) {
+          $('#com_hand').text('パー');
+          $('#result').text('負け');
+        } else {
+          alert('エラー');
+        }
+      });
+
+      $('#button_cho').on('click', function () {
+        const randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber == 0) {
+          $('#com_hand').text('グー');
+          $('#result').text('負け');
+        } else if (randomNumber == 1) {
+          $('#com_hand').text('チョキ');
+          $('#result').text('あいこ');
+        } else if (randomNumber == 2) {
+          $('#com_hand').text('パー');
+          $('#result').text('勝ち');
+        } else {
+          alert('エラー');
+        }
+      });
+
+      $('#button_pa').on('click', function () {
+        const randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber == 0) {
+          $('#com_hand').text('グー');
+          $('#result').text('勝ち');
+        } else if (randomNumber == 1) {
+          $('#com_hand').text('チョキ');
+          $('#result').text('負け');
+        } else if (randomNumber == 2) {
+          $('#com_hand').text('パー');
+          $('#result').text('あいこ');
+        } else {
+          alert('エラー');
+        }
+      })
+
+    </script>
+  </main>
+
+</body>
+
+</html>

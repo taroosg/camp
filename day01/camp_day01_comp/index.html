@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おみくじアプリ</title>
+  <!-- フォントの読み込み -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <!-- cssファイルの読み込み -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main>
+    <section class="title_section">
+      <h1>運試しおみくじ</h1>
+    </section>
+    <section class="button_section">
+      <button id="pull1" class="button_health">
+        <img src="./images/rod.png" alt="">
+        健康運
+      </button>
+      <button id="pull2" class="button_love">
+        <img src="./images/heart.png" alt="">
+        恋愛運
+      </button>
+      <button id="pull3" class="button_economy">
+        <img src="./images/coin.png" alt="">
+        経済運
+      </button>
+      <button id="pull4" class="button_study">
+        <img src="./images/program.png" alt="">
+        学業運
+      </button>
+    </section>
+    <section class="result_section">
+      <p id="result">結果は？？</p>
+    </section>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $('#pull1').on('click', function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+      let result = '';
+      if (randomNumber == 0) {
+        result = '大吉';
+      } else if (randomNumber == 1) {
+        result = '中吉';
+      } else if (randomNumber == 2) {
+        result = '小吉';
+      } else if (randomNumber == 3) {
+        result = '凶';
+      } else if (randomNumber == 4) {
+        result = '大凶';
+      } else {
+        result = 'エラー';
+      }
+      $('#result').text(result);
+    });
+  </script>
+</body>
+
+</html>
